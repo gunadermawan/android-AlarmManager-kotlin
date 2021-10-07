@@ -6,7 +6,6 @@ import android.view.View
 import com.gunder.myalarmmanager.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.min
 
 class MainActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerFragment.DialogDateListener, TimePickerFragment.DialogTimeListener {
@@ -84,7 +83,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
             TIME_PICKER_REPEAT_TAG -> {
             }
             else -> {
-
             }
         }
     }
