@@ -44,7 +44,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         showToast(context, title, message)
 //        notification
-        if(message != null){
+        if (message != null) {
             showAlarmNotification(context, title, message, notifId)
         }
 
@@ -82,7 +82,6 @@ class AlarmReceiver : BroadcastReceiver() {
         val pendingIntent = PendingIntent.getBroadcast(context, ID_ONETIME, intent, 0)
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
         Toast.makeText(context, "One Time Alarm set up", Toast.LENGTH_SHORT).show()
-
     }
 
     private fun showAlarmNotification(
@@ -102,13 +101,14 @@ class AlarmReceiver : BroadcastReceiver() {
             .setContentTitle(title)
             .setContentText(message)
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
-            .setVibrate(longArrayOf(1000,1000,1000,1000,1000))
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setSound(alarmSound)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel =
+                NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
             channel.enableVibration(true)
-            channel.vibrationPattern = longArrayOf(1000,1000,1000,1000,1000)
+            channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
             builder.setChannelId(channelId)
             val notification = builder.build()
             notificationManagerCompat.notify(notifId, notification)
@@ -124,5 +124,9 @@ class AlarmReceiver : BroadcastReceiver() {
         } catch (e: ParseException) {
             true
         }
+    }
+//    Repeating alarmManager
+    private fun setRepeatingAlarm(context: Context, type: String, time: String, message: String){
+
     }
 }

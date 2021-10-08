@@ -11,11 +11,13 @@ import java.util.*
 class TimePickerFragment : DialogFragment(), TimePickerDialog.OnTimeSetListener {
     private var mListener: DialogTimeListener? = null
 
+//    di pake untuk mngaitkan dengan mainAct
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mListener = context as DialogTimeListener?
     }
 
+//    dipake untuk melepaskan dg mainAct
     override fun onDetach() {
         super.onDetach()
         if (mListener != null) {

@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
 
     private var binding: ActivityMainBinding? = null
     private lateinit var alarmReceiver: AlarmReceiver
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
         alarmReceiver = AlarmReceiver()
     }
 
+    // listener button
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_once_date -> {
@@ -61,11 +63,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
         binding = null
     }
 
+    //   Kode di bawah ini adalah hasil dari implementasi dari DatePickerFragment.DialogDateListener, TimePickerFragment.DialogTimeListener.
     override fun onDialogDateSet(tag: String?, year: Int, month: Int, dayOfMonth: Int) {
 //        Siapkan date formternya terlebih dahulu
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
 //        setText dari textView once
         binding?.tvOnceDate?.text = dateFormat.format(calendar.time)
     }
