@@ -159,7 +159,9 @@ class AlarmReceiver : BroadcastReceiver() {
             if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
         val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0)
         pendingIntent.cancel()
+
         alarmManager.cancel(pendingIntent)
+
         Toast.makeText(context, "Repeating alarm dibatalkan", Toast.LENGTH_SHORT).show()
     }
 }
